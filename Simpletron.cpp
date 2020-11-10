@@ -50,9 +50,13 @@ void Simpletron::ejecutarInstruccion(int operacion){
         case Instrucciones::BIFURCAR_NEG :
             if(acumulador < 0)
                 contador = memoria[operando];
+            break;
         case Instrucciones::BIFURCAR_CERO :
             if(acumulador == 0)
                 contador = memoria[operando];
+            break;
+        default:
+            cout << "Instruccion no válida" << endl;
     }
 }
 
