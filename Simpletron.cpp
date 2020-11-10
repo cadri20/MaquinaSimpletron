@@ -18,7 +18,7 @@ void Simpletron::cargarInstruccion(int instruccion){
     operando = instruccion % 100;
 }
 
-void Simpletron::ejecutarInstruccion(int operacion){
+int Simpletron::ejecutarInstruccion(int operacion){
     switch(operacion){
         case Instrucciones::LEER :
             cin >> memoria[operando];
@@ -55,15 +55,21 @@ void Simpletron::ejecutarInstruccion(int operacion){
             if(acumulador == 0)
                 contador = memoria[operando];
             break;
+        case Instrucciones::ALTO:
+            return 1;
         default:
             cout << "Instruccion no válida" << endl;
     }
+    return 0;
 }
 
 void Simpletron::ejecutar(){
-    while(memoria[contador] != ALTO){
+    while(1){
         cargarInstruccion(memoria[contador]);
-        ejecutarInstruccion(codigoDeOperacion);
+        int terminar = ejecutarInstruccion(codigoDeOperacion);
+        if(terminar == 1){
+            break;
+        }
         if(codigoDeOperacion != BIFURCAR && codigoDeOperacion != BIFURCAR_NEG && codigoDeOperacion != BIFURCAR_CERO)
             contador++;              
     }

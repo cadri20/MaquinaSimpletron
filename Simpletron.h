@@ -8,7 +8,7 @@ class Simpletron{
         int operando;
 
         void cargarInstruccion(int);
-        void ejecutarInstruccion(int);
+        int ejecutarInstruccion(int);
     public:
         Simpletron();       
         void cargarPrograma(int [],int );
