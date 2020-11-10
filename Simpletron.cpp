@@ -12,6 +12,7 @@ void Simpletron::cargarPrograma(int programa[], int tamanio){
     for(int i = 0; i < tamanio; i++){
         memoria[i] = programa[i];
     }
+    numeroDeInstrucciones = tamanio;
 }
 void Simpletron::cargarInstruccion(int instruccion){
     codigoDeOperacion = instruccion / 100;
@@ -19,6 +20,7 @@ void Simpletron::cargarInstruccion(int instruccion){
 }
 
 int Simpletron::ejecutarInstruccion(int operacion){
+    bool seBifurco = false;
     switch(operacion){
         case Instrucciones::LEER :
             cin >> memoria[operando];
@@ -42,35 +44,44 @@ int Simpletron::ejecutarInstruccion(int operacion){
             acumulador*= memoria[operando];
             break;
         case Instrucciones::DIVIDIR :
-            acumulador/= memoria[operando];
+            acumulador/= operando;
             break;
         case Instrucciones::BIFURCAR :
-            contador = memoria[operando];
+            contador = operando;
+            seBifurco = true;
             break;
         case Instrucciones::BIFURCAR_NEG :
-            if(acumulador < 0)
-                contador = memoria[operando];
+            if(acumulador < 0){
+                contador = operando;
+                seBifurco = true;
+                //cout << "Se bifurco a la instruccion " << contador;
+            }
             break;
         case Instrucciones::BIFURCAR_CERO :
-            if(acumulador == 0)
-                contador = memoria[operando];
+            if(acumulador == 0){
+                contador = operando;
+                seBifurco = true;
+            }
             break;
         case Instrucciones::ALTO:
             return 1;
         default:
             cout << "Instruccion no válida" << endl;
     }
+    if(!seBifurco)
+        contador++;
     return 0;
+
+    
 }
 
 void Simpletron::ejecutar(){
     while(1){
         cargarInstruccion(memoria[contador]);
+        //cout << "instruccion cargada " << memoria[contador] << endl; 
         int terminar = ejecutarInstruccion(codigoDeOperacion);
-        if(terminar == 1){
+        if(terminar == 1 || contador >= numeroDeInstrucciones){
             break;
-        }
-        if(codigoDeOperacion != BIFURCAR && codigoDeOperacion != BIFURCAR_NEG && codigoDeOperacion != BIFURCAR_CERO)
-            contador++;              
+        }        
     }
 }
