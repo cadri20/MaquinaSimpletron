@@ -8,9 +8,10 @@ using namespace std;
 using namespace std;
 #include <vector>
 using namespace std;
+#include "utils.h"
+#include "evaluarPostfijo.h"
 int valorPrecedencia(char);
 int precedencia(char op1, char op2);
-bool esOperador(char c);
 void imprimirArreglo(char arreglo[], char length){
     for(int i = 0; i < length; i++)
         cout << arreglo[i];
@@ -54,9 +55,7 @@ void convertirAPostfijo(char expresion[], int tam_expresion, vector<char> &postf
     
     
 }
-bool esOperador(char c){
-    return c == '+' || c == '-' || c == '*' || c == '/' || c == '/' || c == '^' || c == '%'; 
-}
+
 int precedencia(char op1, char op2){
     int precedencia1 = valorPrecedencia(op1);
     int precedencia2 = valorPrecedencia(op2);
@@ -76,9 +75,10 @@ int valorPrecedencia(char operador){
 }
 
 int main(){
-    char expresion[] = "(5+3)*5/2%2";
+    char expresion[] = "5+3*5/2";
     vector<char> postfij;
-    convertirAPostfijo(expresion,11,postfij);
+    convertirAPostfijo(expresion,7,postfij);
     for(int i = 0; i < postfij.size();i++)
         cout << postfij[i];
+    cout << endl << evaluarExpresionPostfijo(postfij) << endl;
 }
