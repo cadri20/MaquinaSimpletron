@@ -21,3 +21,10 @@ int calcular(int x, int y, char operador){
     cout << "El operador ingresado no es valido:" << operador << endl;
     return 0;
 }
+int tamCadena(char cadena[]){
+    //int tam = 0;
+    int i = 0;
+    while(cadena[i] != '\0')
+        i++;
+    return i;
+}

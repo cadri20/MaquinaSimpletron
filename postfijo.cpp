@@ -75,9 +75,9 @@ int valorPrecedencia(char operador){
 }
 
 int main(){
-    char expresion[] = "5+3*5/2";
+    char expresion[] = "5+3*5/2-1";
     vector<char> postfij;
-    convertirAPostfijo(expresion,7,postfij);
+    convertirAPostfijo(expresion,tamCadena(expresion),postfij);
     for(int i = 0; i < postfij.size();i++)
         cout << postfij[i];
     cout << endl << evaluarExpresionPostfijo(postfij) << endl;
