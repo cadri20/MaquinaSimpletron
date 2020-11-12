@@ -13,11 +13,15 @@ int calcular(int x, int y, char operador){
         return x * y;
     if(operador == '/')
         return x / y;
-    if(operador = '%')
+    if(operador == '%')
         return x % y;
-    
-    if(operador == '^')
-        return x ^ y;
+    if(operador == '^'){
+        int potencia = 1;
+        for(int i = 1; i <= y; i++){
+            potencia*= x;
+        }
+        return potencia;
+    }
     cout << "El operador ingresado no es valido:" << operador << endl;
     return 0;
 }

@@ -69,13 +69,14 @@ int precedencia(char op1, char op2){
     
 }
 int valorPrecedencia(char operador){
+    if(operador == '^') return 2;
     if(operador == '*' || operador == '/' || operador == '%') return 1;
     if(operador == '+' || operador == '-') return 0;
     return -1;
 }
 
 int main(){
-    char expresion[] = "5+3*5/2-1";
+    char expresion[] = "5+3*5/2+2^4";
     vector<char> postfij;
     convertirAPostfijo(expresion,tamCadena(expresion),postfij);
     for(int i = 0; i < postfij.size();i++)
