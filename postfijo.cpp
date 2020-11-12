@@ -16,7 +16,7 @@ void imprimirArreglo(char arreglo[], char length){
         cout << arreglo[i];
     cout << endl;
 }
-void postfijo(char expresion[], int tam_expresion, vector<char> &postfijo){
+void convertirAPostfijo(char expresion[], int tam_expresion, vector<char> &postfijo){
     stack<char> pila;
     pila.push('(');
     //list<char> postfijo;
@@ -78,7 +78,7 @@ int valorPrecedencia(char operador){
 int main(){
     char expresion[] = "(5+3)*5/2%2";
     vector<char> postfij;
-    postfijo(expresion,11,postfij);
+    convertirAPostfijo(expresion,11,postfij);
     for(int i = 0; i < postfij.size();i++)
         cout << postfij[i];
 }
