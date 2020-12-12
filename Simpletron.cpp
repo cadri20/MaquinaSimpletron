@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 
 #include "Simpletron.h"
@@ -12,6 +14,7 @@ void Simpletron::cargarPrograma(int programa[], int tamanio){
     for(int i = 0; i < tamanio; i++){
         memoria[i] = programa[i];
     }
+    delete programa;
     numeroDeInstrucciones = tamanio;
 }
 void Simpletron::cargarInstruccion(int instruccion){
@@ -84,4 +87,19 @@ void Simpletron::ejecutar(){
             break;
         }        
     }
+}
+
+void Simpletron::cargarPrograma(char *pathArchivo) {
+    ifstream archivoEntrada(pathArchivo, ios::in);
+    int programa[100];
+    int n = 0;
+    if(!archivoEntrada){
+        cerr << "No se pudo abrir el archivo" << endl;
+    }
+    int entrada;
+    while(archivoEntrada >> entrada){
+        programa[n] = entrada;
+        n++;
+    }
+    Simpletron::cargarPrograma(programa,n);
 }
