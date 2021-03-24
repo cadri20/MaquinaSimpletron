@@ -14,6 +14,7 @@ class Simpletron{
     public:
         Simpletron();       
         void cargarPrograma(int [],int );
+        void cargarPrograma(char *pathArchivo);
         void ejecutar();
         
 };
