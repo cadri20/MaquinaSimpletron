@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 #include <fstream>
-using std::ifstream;
+
 int main(int argc, char *argv[]){
     int programa[100];
     int n = 0;
