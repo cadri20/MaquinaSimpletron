@@ -13,7 +13,7 @@ int evaluarExpresionPostfijo(vector<char> postfijo){
     size_t tamanio = postfijo.size();
     for(int i = 0; i < tamanio; i++){
         char charActual = postfijo[i];
-        if(isdigit(charActual))
+        if(!esOperador(charActual))
             pila.push(charActual - '0');
         else if(esOperador(charActual)){
             int x = pila.top();

@@ -20,7 +20,7 @@ void imprimirArreglo(char arreglo[], char length){
 void convertirAPostfijo(char expresion[], int tam_expresion, vector<char> &postfijo){
     stack<char> pila;
     pila.push('(');
-    //list<char> postfijo;
+
     char infijo[tam_expresion + 1];
     for(int i = 0; i < tam_expresion; i++){
         infijo[i] = expresion[i];
@@ -31,7 +31,7 @@ void convertirAPostfijo(char expresion[], int tam_expresion, vector<char> &postf
         if(pila.empty())
             break;
         char charActual = infijo[i];
-        if(isdigit(charActual))
+        if(esOperando(charActual))
             postfijo.push_back(charActual);
         else if(charActual == '(')
             pila.push(charActual);

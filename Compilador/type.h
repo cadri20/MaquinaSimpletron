@@ -6,7 +6,7 @@
 #define MAQUINASIMPLETRON_TYPE_H
 
 struct EntradaTabla{
-    char[] simbolo;
+    char simbolo;
     char tipo;
     int ubicacion;
 };
