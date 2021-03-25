@@ -75,8 +75,8 @@ int valorPrecedencia(char operador){
     return -1;
 }
 
-int main(){
-    char expresion[] = "51+3*5/2+2^4";
+int main(int argc, char **argv){
+    char *expresion = argv[1];
     vector<char> postfij;
     convertirAPostfijo(expresion,tamCadena(expresion),postfij);
     for(int i = 0; i < postfij.size();i++)

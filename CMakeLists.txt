@@ -9,4 +9,6 @@ add_executable(MaquinaSimpletron
         instrucciones.h
         main.cpp
         Simpletron.cpp
-        Simpletron.h)
+        Simpletron.h TablaSimbolos.cpp TablaSimbolos.h
+        Compilador/evaluarPostfijo.cpp Compilador/evaluarPostfijo.h Compilador/postfijo.cpp
+        Compilador/utils.cpp Compilador/utils.h Compilador/type.h Compilador/Compilador.cpp Compilador/Compilador.h)

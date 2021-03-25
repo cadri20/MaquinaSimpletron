@@ -81,7 +81,6 @@ int Simpletron::ejecutarInstruccion(int operacion){
 void Simpletron::ejecutar(){
     while(1){
         cargarInstruccion(memoria[contador]);
-        //cout << "instruccion cargada " << memoria[contador] << endl; 
         int terminar = ejecutarInstruccion(codigoDeOperacion);
         if(terminar == 1 || contador >= numeroDeInstrucciones){
             break;
