@@ -2,7 +2,7 @@
 // Created by Hp on 24/03/2021.
 //
 
-#include "instrucciones.h"
+#include "../instrucciones.h"
 #include <cstring>
 #include "Compilador.h"
 
@@ -57,16 +57,17 @@ void Compilador::primeraPasada() {
     if(!archivoEntrada){
         cerr << "No se pudo abrir el archivo" << endl;
     }
-    char *entrada;
+    char entrada[30];
+
     std::cout << "Se abrio el archivo" << endl;
-    while(archivoEntrada >> entrada){
+    while(archivoEntrada.getline(entrada, 30, '\n')){
         std::cout << "Entro en el bucle" << endl;
         char *linea = strtok(entrada, " ");
         tabla.add(linea, 'L', contInstruc);
-        string cmd = strtok(0, " ");
+        char *cmd = strtok(NULL, " ");
 
-        if(cmd == "input"){
-            string simbolo = strtok(0, " ");
+        if(strcmp(cmd, "input") == 0){
+            string simbolo = strtok(NULL, " ");
             int ubicacion = tabla.getUbicacionMem(simbolo);
             if(ubicacion == -1) { //el simbolo no se encuentra en la tabla
                 tabla.add(simbolo, 'V', dirVarActual);
@@ -76,7 +77,7 @@ void Compilador::primeraPasada() {
 
             instrucciones.push_back(LEER*100 + ubicacion);
         }
-        else if(cmd == "print"){
+        else if(strcmp(cmd, "print") == 0){
             string simbolo = strtok(0, " ");
             int ubicacion = tabla.getUbicacionMem(simbolo);
             instrucciones.push_back(ESCRIBIR*100 + ubicacion);
