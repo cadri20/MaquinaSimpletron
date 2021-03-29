@@ -10,15 +10,26 @@ using namespace std;
 using namespace std;
 #include "utils.h"
 #include "type.h"
+#include <iostream>
+#include <fstream>
+using std::ofstream;
+#include <string>
+#include "TablaSimbolos.h"
+using namespace std;
 
 class Compilador {
 private:
     int banderas[100];
-    EntradaTabla tablaSimbolos[100];
+    TablaSimbolos tabla;
     int contInstruc;
     int dirVarActual;
+    vector<int> instrucciones;
     vector<int> evaluarExpresionPostfijo(vector<char> postfijo, int dirAlmacenar);
-    int getUbicacionMem(char simbolo);
+    char *pathArchivoEntrada;
+public:
+    Compilador(char *pathArchivoFuente);
+    void primeraPasada();
+    void segundaPasada(string);
 };
 
 

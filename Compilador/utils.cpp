@@ -1,8 +1,6 @@
 #include "utils.h"
-#include <vector>
-using namespace std;
 #include <iostream>
-#include <instrucciones.h>
+#include "instrucciones.h"
 
 using namespace std;
 bool esOperador(char c){

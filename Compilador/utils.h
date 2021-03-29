@@ -1,3 +1,5 @@
+#include <vector>
+using namespace std;
 bool esOperador(char);
 bool esOperando(char);
 int calcular(int,int,char);

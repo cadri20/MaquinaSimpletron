@@ -5,8 +5,10 @@
 #ifndef MAQUINASIMPLETRON_TYPE_H
 #define MAQUINASIMPLETRON_TYPE_H
 
+#include <string>
+
 struct EntradaTabla{
-    char simbolo;
+    std::string simbolo;
     char tipo;
     int ubicacion;
 };
